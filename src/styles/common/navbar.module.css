@@ -1,0 +1,19 @@
+/*Note: should name module css with camelCase*/
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  gap: 1em;
+  background-color: black;
+}
+
+.navTitle {
+  font-size: x-large;
+  font-weight: 300;
+}
+
+.navMenu {
+  display: flex;
+  gap: 0.5em;
+  list-style: none;
+}
