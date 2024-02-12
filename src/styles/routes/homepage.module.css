@@ -1,3 +1,10 @@
+.content {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .title {
-  font-size: x-large;
+  font-size: xx-large;
 }
