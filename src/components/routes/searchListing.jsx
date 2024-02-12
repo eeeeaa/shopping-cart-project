@@ -11,7 +11,11 @@ function useQuery() {
 function SearchListing() {
   let query = useQuery();
   return (
-    <div className={styles.title}>Search listing: {query.get("searchkey")}</div>
+    <div className={styles.container}>
+      <div className={styles.title}>
+        Search listing: {query.get("searchkey")}
+      </div>
+    </div>
   );
 }
 

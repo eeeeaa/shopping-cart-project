@@ -21,6 +21,7 @@
 }
 
 .navMenu {
+  position: relative;
   display: flex;
   gap: 1em;
   list-style: none;

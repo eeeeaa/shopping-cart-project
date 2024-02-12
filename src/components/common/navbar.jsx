@@ -1,9 +1,10 @@
 import styles from "../../styles/common/navbar.module.css";
+import CartDropdown from "./cartMenu";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Navbar() {
+function Searchbox() {
   const [searchVal, setSearchVal] = useState("");
   const navigate = useNavigate();
   const goToSearchPage = (value) =>
@@ -13,31 +14,46 @@ function Navbar() {
     });
 
   return (
+    <div className={styles.searchBox}>
+      <input
+        className={styles.searchInput}
+        type="text"
+        name=""
+        placeholder="Search"
+        onChange={(e) => setSearchVal(e.target.value)}
+        onKeyDown={() => goToSearchPage(searchVal)}
+      />
+      <button
+        className={styles.searchButton}
+        onClick={() => goToSearchPage(searchVal)}
+      >
+        S
+      </button>
+    </div>
+  );
+}
+
+function NavMenu() {
+  return (
+    <ul className={styles.navMenu}>
+      <Link to="/">
+        <li className={styles.navItem}>Home</li>
+      </Link>
+      <li>
+        <CartDropdown />
+      </li>
+    </ul>
+  );
+}
+
+function Navbar() {
+  return (
     <div className={styles.navContainer}>
       <div className={styles.navLeftContent}>
         <div className={styles.navTitle}>Test</div>
-        <div className={styles.searchBox}>
-          <input
-            className={styles.searchInput}
-            type="text"
-            name=""
-            placeholder="Search"
-            onChange={(e) => setSearchVal(e.target.value)}
-          />
-          <button
-            className={styles.searchButton}
-            onClick={() => goToSearchPage(searchVal)}
-          >
-            S
-          </button>
-        </div>
+        <Searchbox />
       </div>
-      <ul className={styles.navMenu}>
-        <Link to="/">
-          <li className={styles.navItem}>Home</li>
-        </Link>
-        <li className={styles.navItem}>Cart</li>
-      </ul>
+      <NavMenu />
     </div>
   );
 }
