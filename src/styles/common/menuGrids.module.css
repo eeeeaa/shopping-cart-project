@@ -1,0 +1,36 @@
+.menuGrids {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: 2em;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  width: 250px;
+  min-height: 300px;
+  background-color: #164e63;
+  padding: 1em 0.5em;
+  border-radius: 1em;
+
+  .cardImage {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+  }
+
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    width: 100%;
+
+    .cardPrice {
+      margin-left: auto;
+    }
+  }
+}

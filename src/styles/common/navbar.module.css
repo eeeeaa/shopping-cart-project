@@ -46,7 +46,7 @@
 }
 
 .searchBox:hover > .searchInput {
-  width: 240px;
+  width: 280px;
   padding: 0.2em 1em;
 }
 
@@ -85,11 +85,18 @@
   transition: 0.4s;
   line-height: 30px;
   padding: 0.2em 1em;
-  width: 150px;
+  width: 200px;
 }
 
 @media screen and (max-width: 620px) {
+  .searchBox > .searchInput {
+    width: 100px;
+  }
   .searchBox:hover > .searchInput {
-    width: 150px;
+    width: 100px;
+  }
+
+  .navTitle {
+    display: none;
   }
 }

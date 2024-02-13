@@ -1,20 +1,35 @@
 import styles from "../../styles/routes/searchListing.module.css";
-import React from "react";
-import { useLocation } from "react-router-dom";
+import MenuGrids from "../common/menuGrids";
+import { useDataFetching } from "../../utils/dataFetcher";
+import PropTypes from "prop-types";
 
-function useQuery() {
-  const { search } = useLocation();
+SearchListing.propTypes = {
+  searchQuery: PropTypes.string,
+};
 
-  return React.useMemo(() => new URLSearchParams(search), [search]);
-}
+function SearchListing({ searchQuery }) {
+  const { data, error, loading } = useDataFetching(
+    "https://fakestoreapi.com/products?limit=20"
+  );
+  if (error) return <p>A network error was encountered</p>;
 
-function SearchListing() {
-  let query = useQuery();
+  if (loading) return <p>Loading...</p>;
+
+  if (searchQuery.length > 0) {
+    return (
+      <div className={styles.container}>
+        <MenuGrids
+          menuList={data.filter((item) => {
+            return item.title.includes(searchQuery);
+          })}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className={styles.container}>
-      <div className={styles.title}>
-        Search listing: {query.get("searchkey")}
-      </div>
+      <MenuGrids menuList={data} />
     </div>
   );
 }

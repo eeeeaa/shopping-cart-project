@@ -1,16 +1,28 @@
 import styles from "../../styles/common/navbar.module.css";
 import CartDropdown from "./cartMenu";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function Searchbox() {
-  const [searchVal, setSearchVal] = useState("");
+Searchbox.propTypes = {
+  searchQuery: PropTypes.string,
+  setSearchQuery: PropTypes.func,
+};
+
+NavMenu.propTypes = {
+  setSearchQuery: PropTypes.func,
+};
+
+Navbar.propTypes = {
+  searchQuery: PropTypes.string,
+  setSearchQuery: PropTypes.func,
+};
+
+function Searchbox({ searchQuery, setSearchQuery }) {
   const navigate = useNavigate();
-  const goToSearchPage = (value) =>
+  const goToSearchPage = () =>
     navigate({
       pathname: "/search",
-      search: `?searchkey=${value}`,
     });
 
   return (
@@ -20,24 +32,27 @@ function Searchbox() {
         type="text"
         name=""
         placeholder="Search"
-        onChange={(e) => setSearchVal(e.target.value)}
-        onKeyDown={() => goToSearchPage(searchVal)}
+        onChange={(e) => {
+          setSearchQuery(e.target.value);
+          goToSearchPage();
+        }}
+        value={searchQuery}
       />
-      <button
-        className={styles.searchButton}
-        onClick={() => goToSearchPage(searchVal)}
-      >
-        S
-      </button>
+      <button className={styles.searchButton}>S</button>
     </div>
   );
 }
 
-function NavMenu() {
+function NavMenu({ setSearchQuery }) {
   return (
     <ul className={styles.navMenu}>
       <Link to="/">
         <li className={styles.navItem}>Home</li>
+      </Link>
+      <Link to="/search">
+        <li className={styles.navItem} onClick={() => setSearchQuery("")}>
+          Products
+        </li>
       </Link>
       <li>
         <CartDropdown />
@@ -46,14 +61,14 @@ function NavMenu() {
   );
 }
 
-function Navbar() {
+function Navbar({ searchQuery, setSearchQuery }) {
   return (
     <div className={styles.navContainer}>
       <div className={styles.navLeftContent}>
         <div className={styles.navTitle}>Test</div>
-        <Searchbox />
+        <Searchbox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       </div>
-      <NavMenu />
+      <NavMenu setSearchQuery={setSearchQuery} />
     </div>
   );
 }
