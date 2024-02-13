@@ -9,28 +9,45 @@
 .cardContainer {
   display: flex;
   flex-direction: column;
-  gap: 1em;
   align-items: center;
+  gap: 1em;
   width: 250px;
-  min-height: 300px;
+  height: 400px;
   background-color: #164e63;
-  padding: 1em 0.5em;
+
   border-radius: 1em;
+  transition: transform 0.2s ease;
 
   .cardImage {
-    width: 150px;
+    width: 250px;
     height: 150px;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 1em 0 1em 0;
+  }
+
+  .cardHeader,
+  .cardContent {
+    width: 85%;
   }
 
   .cardHeader {
-    display: flex;
-    justify-content: space-between;
-    gap: 1em;
-    width: 100%;
+    display: grid;
+    grid-template: 1fr / 1fr 1fr;
+    align-items: center;
+    justify-items: center;
 
     .cardPrice {
       margin-left: auto;
     }
   }
+
+  .cardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+}
+
+.cardContainer:hover {
+  transform: scale(1.02);
 }
