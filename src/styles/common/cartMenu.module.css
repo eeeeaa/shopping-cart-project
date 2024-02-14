@@ -9,9 +9,51 @@
   margin-top: 50px;
   right: -0.4em;
   flex-direction: column;
-  width: 300px;
+  width: 400px;
   justify-content: center;
   align-items: center;
+}
+
+.emptyCartText {
+  align-self: center;
+  color: #64748b;
+  padding: 1em;
+  font-size: x-large;
+  font-weight: 100;
+}
+
+.cartItemContainer {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding: 1em;
+
+  .cartItemImg {
+    object-fit: contain;
+    width: 64px;
+    height: 64px;
+  }
+
+  .cartItemQty {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    .minus,
+    .plus {
+      width: 24px;
+      height: 24px;
+      background: #71717a;
+      border-color: transparent;
+      border-radius: 0.5em;
+      transition: background-color, transform 0.2s ease;
+    }
+    .minus:hover,
+    .plus:hover {
+      background: #a1a1aa;
+      transform: scale(1.02);
+    }
+  }
 }
 
 .menu > li {
@@ -37,7 +79,7 @@
 .menuButton::before,
 .menuButton::after {
   display: block;
-  background-color: #fff;
+  background-color: #047857;
   position: absolute;
   height: 4px;
   width: 30px;
@@ -78,7 +120,7 @@
 }
 #menuToggle:checked ~ .menu li {
   border: 1px solid #333;
-  height: 2.5em;
+  height: 150px;
   padding: 0.5em;
   transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
 }

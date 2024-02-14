@@ -4,18 +4,29 @@ import LinesEllipsis from "react-lines-ellipsis";
 import { formatPrice } from "../../utils/priceFormatter";
 
 MenuCard.propTypes = {
+  id: PropTypes.string,
   title: PropTypes.string,
   price: PropTypes.number,
   category: PropTypes.string,
   description: PropTypes.string,
   imageUrl: PropTypes.string,
+  addItemToCart: PropTypes.func,
 };
 
 MenuGrids.propTypes = {
   menuList: PropTypes.arrayOf(PropTypes.object),
+  addItemToCart: PropTypes.func,
 };
 
-function MenuCard({ title, price, category, description, imageUrl }) {
+function MenuCard({
+  id,
+  title,
+  price,
+  category,
+  description,
+  imageUrl,
+  addItemToCart,
+}) {
   return (
     <div className={styles.cardContainer}>
       <img src={imageUrl} alt={title} className={styles.cardImage} />
@@ -59,23 +70,39 @@ function MenuCard({ title, price, category, description, imageUrl }) {
             basedOn="letters"
           />
         </div>
+        <button
+          className={styles.addToCartButton}
+          type="button"
+          onClick={() =>
+            addItemToCart({
+              id: id,
+              title: title,
+              price: price,
+              image: imageUrl,
+            })
+          }
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );
 }
 
-function MenuGrids({ menuList }) {
+function MenuGrids({ menuList, addItemToCart }) {
   return (
     <div className={styles.menuGrids}>
       {menuList.map((menu) => {
         return (
           <MenuCard
             key={menu.id}
+            id={menu.id}
             title={menu.title}
             price={menu.price}
             category={menu.category}
             description={menu.description}
             imageUrl={menu.image}
+            addItemToCart={addItemToCart}
           />
         );
       })}

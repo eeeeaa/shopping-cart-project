@@ -10,12 +10,19 @@ import PropTypes from "prop-types";
 Root.propTypes = {
   searchQuery: PropTypes.string,
   setSearchQuery: PropTypes.func,
+  itemsInCart: PropTypes.arrayOf(PropTypes.object),
+  setItemsInCart: PropTypes.func,
 };
 
-function Root({ searchQuery, setSearchQuery }) {
+function Root({ searchQuery, setSearchQuery, itemsInCart, setItemsInCart }) {
   return (
     <div className={styles.container}>
-      <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <Navbar
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        itemsInCart={itemsInCart}
+        setItemsInCart={setItemsInCart}
+      />
       <div className={styles.content}>
         <Outlet />
       </div>
@@ -25,11 +32,17 @@ function Root({ searchQuery, setSearchQuery }) {
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [itemsInCart, setItemsInCart] = useState([]);
   const router = createBrowserRouter([
     {
       path: "/",
       element: (
-        <Root searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        <Root
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          itemsInCart={itemsInCart}
+          setItemsInCart={setItemsInCart}
+        />
       ),
       errorElement: <ErrorPage />,
       children: [
@@ -39,7 +52,13 @@ function App() {
         },
         {
           path: "/search",
-          element: <SearchListing searchQuery={searchQuery} />,
+          element: (
+            <SearchListing
+              searchQuery={searchQuery}
+              itemsInCart={itemsInCart}
+              setItemsInCart={setItemsInCart}
+            />
+          ),
         },
       ],
     },

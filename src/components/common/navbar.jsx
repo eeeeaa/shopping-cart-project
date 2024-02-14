@@ -11,11 +11,15 @@ Searchbox.propTypes = {
 
 NavMenu.propTypes = {
   setSearchQuery: PropTypes.func,
+  itemsInCart: PropTypes.arrayOf(PropTypes.object),
+  setItemsInCart: PropTypes.func,
 };
 
 Navbar.propTypes = {
   searchQuery: PropTypes.string,
   setSearchQuery: PropTypes.func,
+  itemsInCart: PropTypes.arrayOf(PropTypes.object),
+  setItemsInCart: PropTypes.func,
 };
 
 function Searchbox({ searchQuery, setSearchQuery }) {
@@ -43,7 +47,7 @@ function Searchbox({ searchQuery, setSearchQuery }) {
   );
 }
 
-function NavMenu({ setSearchQuery }) {
+function NavMenu({ setSearchQuery, itemsInCart, setItemsInCart }) {
   return (
     <ul className={styles.navMenu}>
       <Link to="/">
@@ -55,20 +59,27 @@ function NavMenu({ setSearchQuery }) {
         </li>
       </Link>
       <li>
-        <CartDropdown />
+        <CartDropdown
+          itemsInCart={itemsInCart}
+          setItemsInCart={setItemsInCart}
+        />
       </li>
     </ul>
   );
 }
 
-function Navbar({ searchQuery, setSearchQuery }) {
+function Navbar({ searchQuery, setSearchQuery, itemsInCart, setItemsInCart }) {
   return (
     <div className={styles.navContainer}>
       <div className={styles.navLeftContent}>
         <div className={styles.navTitle}>Test</div>
         <Searchbox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       </div>
-      <NavMenu setSearchQuery={setSearchQuery} />
+      <NavMenu
+        setSearchQuery={setSearchQuery}
+        itemsInCart={itemsInCart}
+        setItemsInCart={setItemsInCart}
+      />
     </div>
   );
 }

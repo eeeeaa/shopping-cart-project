@@ -46,6 +46,19 @@
     flex-direction: column;
     gap: 1em;
   }
+
+  .addToCartButton {
+    padding: 0.5em 1em;
+    background-color: #1f2937;
+    border-color: transparent;
+    border-radius: 1em;
+    transition: background-color, transform, 0.2s ease;
+  }
+
+  .addToCartButton:hover {
+    background-color: #374151;
+    transform: scale(1.02);
+  }
 }
 
 .cardContainer:hover {
