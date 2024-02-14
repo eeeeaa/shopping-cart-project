@@ -72,7 +72,7 @@ function Navbar({ searchQuery, setSearchQuery, itemsInCart, setItemsInCart }) {
   return (
     <div className={styles.navContainer}>
       <div className={styles.navLeftContent}>
-        <div className={styles.navTitle}>Test</div>
+        <div className={styles.navTitle}>Shopping</div>
         <Searchbox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       </div>
       <NavMenu

@@ -115,12 +115,30 @@ function CartDropdown({ itemsInCart, setItemsInCart }) {
       setItemsInCart([...filtered]);
     }
   };
+
+  const getQuantity = () => {
+    let count = 0;
+    if (itemsInCart.length <= 0) return count;
+
+    for (const item of itemsInCart) {
+      count += item.qty;
+    }
+
+    if (count > 99) {
+      return "99+";
+    } else {
+      return count;
+    }
+  };
   return (
     <>
       <input id={styles.menuToggle} type="checkbox" />
       <label className={styles.menuButtonContainer} htmlFor={styles.menuToggle}>
         <div className={styles.menuButton}></div>
       </label>
+      {itemsInCart.length > 0 && (
+        <div className={styles.menuQuantity}>{getQuantity()}</div>
+      )}
       <ul className={styles.menu}>
         {itemsInCart.length > 0 ? (
           itemsInCart.map((item) => {

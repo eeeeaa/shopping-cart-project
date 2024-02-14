@@ -6,6 +6,24 @@
   gap: 2em;
 }
 
+.errorContainer {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .errorTitle {
+    font-size: xx-large;
+    font-weight: 600;
+  }
+  .errorSubtitle {
+    font-size: large;
+    font-weight: 100;
+    color: #9ca3af;
+  }
+}
+
 .cardContainer {
   display: flex;
   flex-direction: column;

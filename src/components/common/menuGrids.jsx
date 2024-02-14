@@ -89,23 +89,36 @@ function MenuCard({
   );
 }
 
+function NoItemContent() {
+  return (
+    <div className={styles.errorContainer}>
+      <styles className={styles.errorTitle}>Sorry, No search result...</styles>
+      <styles className={styles.errorSubtitle}>please try again</styles>
+    </div>
+  );
+}
+
 function MenuGrids({ menuList, addItemToCart }) {
   return (
     <div className={styles.menuGrids}>
-      {menuList.map((menu) => {
-        return (
-          <MenuCard
-            key={menu.id}
-            id={menu.id}
-            title={menu.title}
-            price={menu.price}
-            category={menu.category}
-            description={menu.description}
-            imageUrl={menu.image}
-            addItemToCart={addItemToCart}
-          />
-        );
-      })}
+      {menuList.length > 0 ? (
+        menuList.map((menu) => {
+          return (
+            <MenuCard
+              key={menu.id}
+              id={menu.id}
+              title={menu.title}
+              price={menu.price}
+              category={menu.category}
+              description={menu.description}
+              imageUrl={menu.image}
+              addItemToCart={addItemToCart}
+            />
+          );
+        })
+      ) : (
+        <NoItemContent />
+      )}
     </div>
   );
 }
