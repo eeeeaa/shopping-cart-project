@@ -14,6 +14,16 @@
   align-items: center;
 }
 
+.shown {
+  display: flex;
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
+  opacity: 0;
+}
+
 .menuQuantity {
   position: absolute;
   display: flex;
@@ -30,6 +40,7 @@
   border-radius: 8px;
   font-size: x-small;
   font-weight: 700;
+  transition: opacity 0.2s ease;
 }
 
 .emptyCartText {

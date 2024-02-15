@@ -136,9 +136,13 @@ function CartDropdown({ itemsInCart, setItemsInCart }) {
       <label className={styles.menuButtonContainer} htmlFor={styles.menuToggle}>
         <div className={styles.menuButton}></div>
       </label>
-      {itemsInCart.length > 0 && (
-        <div className={styles.menuQuantity}>{getQuantity()}</div>
-      )}
+      <div
+        className={`${styles.menuQuantity} ${
+          itemsInCart.length > 0 ? styles.shown : styles.hidden
+        }`}
+      >
+        {getQuantity()}
+      </div>
       <ul className={styles.menu}>
         {itemsInCart.length > 0 ? (
           itemsInCart.map((item) => {
