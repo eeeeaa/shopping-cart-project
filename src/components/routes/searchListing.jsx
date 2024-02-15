@@ -1,6 +1,8 @@
 import styles from "../../styles/routes/searchListing.module.css";
 import MenuGrids from "../common/menuGrids";
 import { useDataFetching } from "../../utils/dataFetcher";
+import ErrorPage from "../common/errorPage";
+import LoadingPage from "../common/loadingPage";
 import PropTypes from "prop-types";
 
 SearchListing.propTypes = {
@@ -34,9 +36,9 @@ function SearchListing({ searchQuery, itemsInCart, setItemsInCart }) {
     }
   };
 
-  if (error) return <p>A network error was encountered</p>;
+  if (error) return <ErrorPage errorMsg={error.message} />;
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingPage />;
 
   if (searchQuery.length > 0) {
     return (
