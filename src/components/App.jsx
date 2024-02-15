@@ -6,6 +6,7 @@ import Navbar from "./common/navbar";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { useState } from "react";
 import PropTypes from "prop-types";
+import MenuItemPage from "./routes/menuItemPage";
 
 Root.propTypes = {
   searchQuery: PropTypes.string,
@@ -55,6 +56,15 @@ function App() {
           element: (
             <SearchListing
               searchQuery={searchQuery}
+              itemsInCart={itemsInCart}
+              setItemsInCart={setItemsInCart}
+            />
+          ),
+        },
+        {
+          path: "/search/:productId",
+          element: (
+            <MenuItemPage
               itemsInCart={itemsInCart}
               setItemsInCart={setItemsInCart}
             />

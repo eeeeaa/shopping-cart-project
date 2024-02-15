@@ -2,6 +2,7 @@ import styles from "../../styles/common/menuGrids.module.css";
 import PropTypes from "prop-types";
 import LinesEllipsis from "react-lines-ellipsis";
 import { formatPrice } from "../../utils/priceFormatter";
+import { useNavigate } from "react-router-dom";
 
 MenuCard.propTypes = {
   id: PropTypes.string,
@@ -27,6 +28,7 @@ function MenuCard({
   imageUrl,
   addItemToCart,
 }) {
+  const navigate = useNavigate();
   return (
     <div className={styles.cardContainer}>
       <img src={imageUrl} alt={title} className={styles.cardImage} />
@@ -70,20 +72,29 @@ function MenuCard({
             basedOn="letters"
           />
         </div>
-        <button
-          className={styles.addToCartButton}
-          type="button"
-          onClick={() =>
-            addItemToCart({
-              id: id,
-              title: title,
-              price: price,
-              image: imageUrl,
-            })
-          }
-        >
-          Add to Cart
-        </button>
+        <div className={styles.cardButtons}>
+          <button
+            className={styles.addToCartButton}
+            type="button"
+            onClick={() =>
+              addItemToCart({
+                id: id,
+                title: title,
+                price: price,
+                image: imageUrl,
+              })
+            }
+          >
+            Add to Cart
+          </button>
+          <button
+            className={styles.addToCartButton}
+            type="button"
+            onClick={() => navigate(`/search/${id}`)}
+          >
+            See details
+          </button>
+        </div>
       </div>
     </div>
   );
