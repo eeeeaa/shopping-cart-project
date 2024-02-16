@@ -50,7 +50,7 @@ function MenuItemPage({ itemsInCart, setItemsInCart }) {
       <div className={styles.title}>
         <LinesEllipsis
           text={data.title}
-          maxLine="1"
+          maxLine="3"
           ellipsis="..."
           trimRight
           basedOn="letters"
@@ -60,7 +60,7 @@ function MenuItemPage({ itemsInCart, setItemsInCart }) {
       <div className={styles.category}>
         <LinesEllipsis
           text={data.category}
-          maxLine="1"
+          maxLine="3"
           ellipsis="..."
           trimRight
           basedOn="letters"
@@ -102,11 +102,11 @@ function MenuItemPage({ itemsInCart, setItemsInCart }) {
         Add to Cart
       </button>
       <button
-        className={styles.addToCartButton}
+        className={styles.backButton}
         type="button"
         onClick={() => navigate(-1)}
       >
-        Back to product pa
+        Back to product page
       </button>
     </div>
   );

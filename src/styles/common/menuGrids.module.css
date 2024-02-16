@@ -65,7 +65,8 @@
     gap: 1em;
   }
 
-  .addToCartButton {
+  .cartButton {
+    cursor: pointer;
     padding: 0.5em 1em;
     background-color: #1f2937;
     border-color: transparent;
@@ -73,7 +74,7 @@
     transition: background-color, transform, 0.2s ease;
   }
 
-  .addToCartButton:hover {
+  .cartButton:hover {
     background-color: #374151;
     transform: scale(1.02);
   }

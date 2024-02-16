@@ -74,7 +74,7 @@ function MenuCard({
         </div>
         <div className={styles.cardButtons}>
           <button
-            className={styles.addToCartButton}
+            className={styles.cartButton}
             type="button"
             onClick={() =>
               addItemToCart({
@@ -88,7 +88,7 @@ function MenuCard({
             Add to Cart
           </button>
           <button
-            className={styles.addToCartButton}
+            className={styles.cartButton}
             type="button"
             onClick={() => navigate(`/search/${id}`)}
           >
