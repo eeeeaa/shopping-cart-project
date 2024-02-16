@@ -88,15 +88,39 @@
   width: 200px;
 }
 
-@media screen and (max-width: 620px) {
-  .searchBox > .searchInput {
-    width: 100px;
+@media screen and (max-width: 768px) {
+  .navContainer {
+    flex-direction: column;
+    align-items: normal;
   }
-  .searchBox:hover > .searchInput {
-    width: 100px;
+  .navLeftContent {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-right: 0;
+
+    .navTitle {
+      font-size: x-large;
+    }
+  }
+  .navMenu {
+    justify-content: space-between;
+  }
+  .searchBox {
+    width: 100%;
   }
 
-  .navTitle {
+  .searchButton {
     display: none;
+  }
+
+  .searchBox > .searchInput {
+    width: 80%;
+  }
+  .searchBox:hover > .searchInput {
+    width: 80%;
+  }
+  .searchInput {
+    width: 80%;
   }
 }
