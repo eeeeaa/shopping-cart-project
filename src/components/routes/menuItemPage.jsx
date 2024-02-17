@@ -46,8 +46,13 @@ function MenuItemPage({ itemsInCart, setItemsInCart }) {
 
   return (
     <div className={styles.container}>
-      <img src={data.image} alt={data.title} className={styles.image} />
-      <div className={styles.title}>
+      <img
+        src={data.image}
+        alt={data.title}
+        className={styles.image}
+        data-testid="item-image"
+      />
+      <div className={styles.title} data-testid="item-title">
         <LinesEllipsis
           text={data.title}
           maxLine="3"
@@ -57,7 +62,7 @@ function MenuItemPage({ itemsInCart, setItemsInCart }) {
         />
       </div>
 
-      <div className={styles.category}>
+      <div className={styles.category} data-testid="item-category">
         <LinesEllipsis
           text={data.category}
           maxLine="3"
@@ -67,7 +72,7 @@ function MenuItemPage({ itemsInCart, setItemsInCart }) {
         />
       </div>
 
-      <div className={styles.price}>
+      <div className={styles.price} data-testid="item-price">
         <LinesEllipsis
           text={formatPrice(data.price)}
           maxLine="1"
@@ -77,7 +82,7 @@ function MenuItemPage({ itemsInCart, setItemsInCart }) {
         />
       </div>
 
-      <div className={styles.description}>
+      <div className={styles.description} data-testid="item-description">
         <LinesEllipsis
           text={data.description}
           maxLine="10"
@@ -89,6 +94,7 @@ function MenuItemPage({ itemsInCart, setItemsInCart }) {
 
       <button
         className={styles.addToCartButton}
+        data-testid="item-add-to-cart-button"
         type="button"
         onClick={() =>
           addItemToCart({
@@ -103,6 +109,7 @@ function MenuItemPage({ itemsInCart, setItemsInCart }) {
       </button>
       <button
         className={styles.backButton}
+        data-testid="item-back-button"
         type="button"
         onClick={() => navigate(-1)}
       >
