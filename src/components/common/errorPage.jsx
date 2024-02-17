@@ -6,9 +6,11 @@ const ErrorPage = ({ errorMsg = null }) => {
   return (
     <div className={styles.container}>
       {errorMsg != null ? (
-        <h1>Error: {errorMsg}</h1>
+        <h1 data-testid="error-page-message">Error: {errorMsg}</h1>
       ) : (
-        <h1>Oh no, this route doesn&apos;t exist!</h1>
+        <h1 data-testid="error-page-message">
+          Oh no, this route doesn&apos;t exist!
+        </h1>
       )}
       <Link to="/">Click here to go back home</Link>
     </div>

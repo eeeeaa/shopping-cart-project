@@ -5,7 +5,7 @@ import { formatPrice } from "../../utils/priceFormatter";
 import { useNavigate } from "react-router-dom";
 
 MenuCard.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.number,
   title: PropTypes.string,
   price: PropTypes.number,
   category: PropTypes.string,
@@ -30,7 +30,7 @@ function MenuCard({
 }) {
   const navigate = useNavigate();
   return (
-    <div className={styles.cardContainer}>
+    <div className={styles.cardContainer} data-testid="menu-item">
       <img src={imageUrl} alt={title} className={styles.cardImage} />
       <div className={styles.cardHeader}>
         <div className={styles.cardTitle}>
@@ -76,6 +76,7 @@ function MenuCard({
           <button
             className={styles.cartButton}
             type="button"
+            data-testid="add-to-cart-button"
             onClick={() =>
               addItemToCart({
                 id: id,
@@ -90,6 +91,7 @@ function MenuCard({
           <button
             className={styles.cartButton}
             type="button"
+            data-testid="see-details-button"
             onClick={() => navigate(`/search/${id}`)}
           >
             See details
